@@ -1,5 +1,6 @@
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
+const button = document.getElementById('spin');
 
 let imageArray = [];
 let directory = "./Images/";
@@ -14,12 +15,13 @@ for (var i = 0; i < 7; i++) {
 let done = true;
 var wheel = [];
 
+button.addEventListener("click", restart);
+
 function start()
 {
   for (var i = 0; i < 5; i++)
   {
     wheel[i] = new Wheel(210 * i);
-    wheel[i].rotate(Math.floor(Math.random() * imageArray.length), (i + 1) * 2, 30);
   }
 
   update();
