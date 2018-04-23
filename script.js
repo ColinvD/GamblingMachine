@@ -14,12 +14,13 @@ for (var i = 0; i < 7; i++) {
 
 let done = true;
 var wheel = [];
+var a = [];
 
 button.addEventListener("click", restart);
 
 function start()
 {
-  for (var i = 0; i < 5; i++)
+  for (var i = 0; i < 7; i++)
   {
     wheel[i] = new Wheel(210 * i);
   }
@@ -29,10 +30,12 @@ function start()
 
 function restart()
 {
-  for (var i = 0; i < imageArray.length; i++)
+  for (var i = 0; i < wheel.length; i++)
   {
-    wheel[i].rotate(Math.floor(Math.random() * imageArray.length), (i + 1) * 2, 30);
+    a[i] = Math.floor(Math.random() * imageArray.length);
+    wheel[i].rotate(a[i], (i + 1) * 1, 30);
   }
+  console.log(a);
 }
 
 function update()
