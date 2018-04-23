@@ -11,63 +11,39 @@ for (var i = 0; i < 7; i++) {
   imageArray[i].src = directory + name + i + format;
 }
 
-
+let done = true;
 var wheel = [];
 
-for (var i = 0; i < 3; i++) {
-  wheel[i] = new Wheel(210 * i, 0, 1, 0);
+function start()
+{
+  for (var i = 0; i < 5; i++)
+  {
+    wheel[i] = new Wheel(210 * i);
+    wheel[i].rotate(Math.floor(Math.random() * imageArray.length), (i + 1) * 2, 30);
+  }
+
+  update();
 }
 
-let done = true;
-
-update();
-
-function update() {
+function update()
+{
   requestAnimationFrame(update);
   context.clearRect(0,0,canvas.width, canvas.height);
 
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < wheel.length; i++)
+  {
     wheel[i].update();
   }
 
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < wheel.length; i++)
+  {
     wheel[i].draw();
   }
-
-/*
-  for (var i = 0; i < 7; i++) {
-    context.drawImage(imageArray[i], 0, (i*200+n+200)%(imageArray.length*200)-200, 200,200);
-  }
-  for (var i = 0; i < 7; i++) {
-    context.drawImage(imageArray[i], 210, (i*200+n+200)%(imageArray.length*200)-200, 200,200);
-  }
-  for (var i = 0; i < 7; i++) {
-    context.drawImage(imageArray[i], 420, (i*200+n+200)%(imageArray.length*200)-200, 200,200);
-  }
-  */
 }
-
-/*
-  elk plaatje in array met x-waarde bij de y toe voegen
-  if(y%?){
-  y = -
-  }
-
-*/
-
-/*
-function drawSlots(slot)
-{
-  for (var i = 0; i < 3; i++)
-  {
-    for (var j = 0; j < imageArray.length; j++) {
-      context.drawImage(imageArray[j], i * 210, (j*200+slot[i]+200)%(imageArray.length*200)-200, 200,200);
-    }
-  }
-}
-*/
 
 function drawReadyNumber(y)
 {
   return Math.floor(y+200 % (imageArray.length*200));
 }
+
+start();

@@ -1,15 +1,38 @@
 class Wheel {
-  constructor(offset, pos, vel, acc) {
+  constructor(offset, pos = 0, vel = 0, acc = 0, stopAt = 0)
+  {
     this.xOffset = offset;
     this.yPos = pos;
     this.yVel = vel;
     this.yAcc = acc;
+    this.stopAt = stopAt;
   }
 
   update()
   {
     this.yVel += this.yAcc;
     this.yPos += this.yVel;
+
+    if(this.yPos >= this.stopAt)
+    {
+      this.yPos = this.stopAt;
+      this.yVel = 0;
+      this.yAcc = 0;
+    }
+  }
+
+  rotate(y, rounds, speed)
+  {
+    this.yPos %= imageArray.length * 200;
+    this.yVel = speed;
+    if(this.yPos > y * 200)
+    {
+      this.stopAt = (y + (rounds + 1) * imageArray.length) * 200;
+    }
+    else
+    {
+      this.stopAt = (y + rounds * imageArray.length) * 200;
+    }
   }
 
   draw(){
