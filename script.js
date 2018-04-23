@@ -26,9 +26,6 @@ function update() {
   requestAnimationFrame(update);
   context.clearRect(0,0,canvas.width, canvas.height);
 
-  var num = Math.floor((n[0]+200 % (imageArray.length*200))/200);
-  console.log(num);
-
   for (var i = 0; i < 3; i++) {
     wheel[i].update();
   }
