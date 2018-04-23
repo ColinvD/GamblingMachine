@@ -25,6 +25,14 @@ function start()
   update();
 }
 
+function restart()
+{
+  for (var i = 0; i < imageArray.length; i++)
+  {
+    wheel[i].rotate(Math.floor(Math.random() * imageArray.length), (i + 1) * 2, 30);
+  }
+}
+
 function update()
 {
   requestAnimationFrame(update);
