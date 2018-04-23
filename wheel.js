@@ -6,6 +6,12 @@ class Wheel {
     this.yAcc = acc;
   }
 
+  update()
+  {
+    this.yVel += this.yAcc;
+    this.yPos += this.yVel;
+  }
+
   draw(){
     for (var j = 0; j < imageArray.length; j++) {
       context.drawImage(imageArray[j], this.xOffset, (j*200+this.yPos+200)%(imageArray.length*200)-200, 200,200);

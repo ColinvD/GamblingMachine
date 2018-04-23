@@ -11,28 +11,31 @@ for (var i = 0; i < 7; i++) {
   imageArray[i].src = directory + name + i + format;
 }
 
-console.log(imageArray);
 
-drawSlots([0,0,200]);
+var wheel = [];
+
+for (var i = 0; i < 3; i++) {
+  wheel[i] = new Wheel(210 * i, 0, 1, 0);
+}
 
 let done = true;
 
-//update();
+update();
 
 function update() {
   requestAnimationFrame(update);
   context.clearRect(0,0,canvas.width, canvas.height);
 
-  var d = 0;
-  d++;
-  n = [];
-  n[0] = d/7;
-  n[1] = d/5;
-  n[2] = d/3;
   var num = Math.floor((n[0]+200 % (imageArray.length*200))/200);
   console.log(num);
 
-  drawSlots(n);
+  for (var i = 0; i < 3; i++) {
+    wheel[i].update();
+  }
+
+  for (var i = 0; i < 3; i++) {
+    wheel[i].draw();
+  }
 
 /*
   for (var i = 0; i < 7; i++) {
@@ -55,7 +58,7 @@ function update() {
 
 */
 
-
+/*
 function drawSlots(slot)
 {
   for (var i = 0; i < 3; i++)
@@ -64,4 +67,10 @@ function drawSlots(slot)
       context.drawImage(imageArray[j], i * 210, (j*200+slot[i]+200)%(imageArray.length*200)-200, 200,200);
     }
   }
+}
+*/
+
+function drawReadyNumber(y)
+{
+  return Math.floor(y+200 % (imageArray.length*200));
 }
