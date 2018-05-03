@@ -16,12 +16,13 @@ for (var i = 0; i < 7; i++) {
 let buttonAmount = 0;
 
 var wheel = [];
+var a = [];
 
 button.addEventListener("click", restart);
 
 function start()
 {
-  for (var i = 0; i < 5; i++)
+  for (var i = 0; i < 7; i++)
   {
     wheel[i] = new Wheel(210 * i);
   }
