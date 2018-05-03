@@ -6,6 +6,7 @@ class Wheel {
     this.yVel = vel;
     this.yAcc = acc;
     this.stopAt = stopAt;
+    this.done = true;
   }
 
   update()
@@ -18,11 +19,13 @@ class Wheel {
       this.yPos = this.stopAt;
       this.yVel = 0;
       this.yAcc = 0;
+      this.done = true;
     }
   }
 
   rotate(y, rounds, speed)
   {
+    this.done = false;
     this.yPos %= imageArray.length * 200;
     this.yVel = speed;
     if(this.yPos > y * 200)

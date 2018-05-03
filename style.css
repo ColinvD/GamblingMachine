@@ -3,15 +3,6 @@ canvas{
 }
 #container{
 }
-#row1{
-  float: left;
-  margin: 10px 5px 0px 5px;
-}
-#row2{
-  float: left;
-  margin: 10px 5px 0px 5px;
-}
-#row3{
-  float: left;
-  margin: 10px 5px 0px 5px;
+html{
+  background: url("./Images/Slots.png") no-repeat center center fixed;
 }
